@@ -33,6 +33,10 @@ let timer = 90;
 let value1 = 0;
 let value2 = 255;
 
+//Variable for fonts
+let firstFont;
+let secondFont;
+
 //Description of preload
 function preload() {
 
@@ -49,7 +53,9 @@ function preload() {
   //Preload the image on the death door
   aliveDoorImage = loadImage(`assets/images/alive.png`);
 
-
+//Preload first font
+firstFont = loadFont('assets/fonts/PressStart2P-Regular.ttf');
+secondFont = loadFont('assets/fonts/LCDAT&TPhoneTimeDate.ttf');
 }
 
 
@@ -94,10 +100,12 @@ function draw() {
 //Design the front
 function gameTitle() {
   push();
+  openMusic.play();
   imageMode(CORNER);
   image(titleImage,0,0,windowWidth,windowHeight);
   textSize(20);
   fill(255);
+  textFont(firstFont);
   text("Press spacebar to enter game",width*0.43,height*0.155);
   pop();
 
@@ -135,7 +143,7 @@ function roomOne() {
   ////***SET UP THE TIMER***////
   //Source: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
   //Styling the font
-  textStyle('LCDAT&TPhoneTimeDate.ttf');
+  textFont(secondFont);
   textAlign(CENTER);
   textSize(30);
   //Display the countdown at the top left of the canvas
@@ -149,8 +157,11 @@ function roomOne() {
     timer --;
   }
   if (timer == 0) {
+
     text("GAME OVER", width/2, height/3);
     text("Press 'Enter' to start again", width/2,height/5);
+    fill(255);
+    rect(0,0,windowWidth,windowHeight);
   }
 }
 
@@ -188,7 +199,7 @@ function roomTwo() {
   ////***SET UP THE TIMER***////
   //Source: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
   //Styling the font
-  textStyle('LCDAT&TPhoneTimeDate.ttf');
+    textFont(secondFont);
   textAlign(CENTER);
   textSize(30);
   //Display the countdown at the top left of the canvas
@@ -240,7 +251,7 @@ function roomThree() {
   ////***SET UP THE TIMER***////
   //Source: https://editor.p5js.org/marynotari/sketches/S1T2ZTMp-
   //Styling the font
-  textStyle('LCDAT&TPhoneTimeDate.ttf');
+  textFont(secondFont);
   textAlign(CENTER);
   textSize(30);
   //Display the countdown at the top left of the canvas
@@ -265,7 +276,7 @@ function roomThree() {
 //End the game when wrong door is chosen
 function gameEnd(){
   background(0);
-  textStyle('LCDAT&TPhoneTimeDate');
+  textFont(firstFont);
   fill(255);
   textAlign(CENTER);
   text("GAME OVER", width/2, height/2);
@@ -277,11 +288,12 @@ function mouseClicked() {
  if (value1 === 0 && state === 1) {
   state = 2;
 }
-else if ( value2 === 255 && state === 2) {
+
+ if ( value2 === 255 && state === 2) {
  state === 3;
  }
 
-else {
+else  {
   state = 4;
  }
 }
