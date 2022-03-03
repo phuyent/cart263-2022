@@ -5,7 +5,11 @@
 //Huyen Tran Pham
 
 //A game based on a Netflix serie called Alice in Borderland.
-
+//Choose the right door between two doors: Death or Alive
+//Goal: Make it out of the building safely
+//There is a map that is going to rotate and blurry as the player goes on
+//Time limit: 120 seconds for the first room, decrease 10 seconds per room
+//Game over when wrong room or time's up
 
 //LET'S START//
 
@@ -26,8 +30,8 @@ let openMusic;
 //Start the state of the game at 0
 let state = 0;
 
-//Set a timer to start from 60
-let timer = 90;
+//Set a timer to start from 120
+let timer = 120;
 
 //Set the color values of the doors
 let value1 = 0;
@@ -36,6 +40,14 @@ let value2 = 255;
 //Variable for fonts
 let firstFont;
 let secondFont;
+
+//Typewriter string for opening game title
+let openString = 'Welcome to one of the first game in JavaLand';
+let openString2 = 'Rule: Choose Death or Alive';
+let openString3 = 'Goal: Make your way out of the building';
+let openString4 = 'Game over: Wrong room or Time is up!';
+let openString5 = 'Press Spacebar to enter the game of Three of Clubs card';
+let lastCharacter = 0;
 
 //Description of preload
 function preload() {
@@ -104,11 +116,17 @@ function gameTitle() {
   imageMode(CORNER);
   image(titleImage,0,0,windowWidth,windowHeight);
   textSize(20);
-  fill(255);
+  fill(0);
   textFont(firstFont);
-  text("Press spacebar to enter game",width*0.43,height*0.155);
+  text(openString.substring(0,lastCharacter),width*0.25,height*0.4);
+  text(openString2.substring(0,lastCharacter),width*0.3,height*0.45);
+  text(openString3.substring(0,lastCharacter),width*0.3,height*0.5);
+  text(openString4.substring(0,lastCharacter),width*0.3,height*0.55);
+  text(openString5.substring(0,lastCharacter),width*0.25,height*0.6);
+
   pop();
 
+lastCharacter += random(0,0.6);
 }
 
 
