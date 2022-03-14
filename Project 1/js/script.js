@@ -45,7 +45,7 @@ let secondFont;
 let openString = 'Welcome to one of the first game in JavaLand';
 let openString2 = 'Rule: Choose Death or Alive';
 let openString3 = 'Goal: Make your way out of the building';
-let openString4 = 'Game over: Wrong room or Time is up!';
+let openString4 = 'Game over: Wrong door or Time is up!';
 let openString5 = 'Press Spacebar to enter the game of Three of Clubs card';
 let lastCharacter = 0;
 
@@ -111,8 +111,9 @@ function draw() {
 //
 //Design the front
 function gameTitle() {
+
   push();
-  openMusic.play();
+
   imageMode(CORNER);
   image(titleImage,0,0,windowWidth,windowHeight);
   textSize(20);
@@ -165,7 +166,7 @@ function roomOne() {
   textAlign(CENTER);
   textSize(30);
   //Display the countdown at the top left of the canvas
-  text('Time:'+timer,100,50);
+  text('TIME:'+timer,100,50);
   // frameCount: this keeps track of the number of times the program has gone throught the code, 60 = 1 second
   // %: this is the Modulo operator, it divides numbers and evaluates to the remainder: 17 % 5 evaluates to 2 remainder
   // This can be used to determine if the number on the left is divisible by the number on the right
