@@ -37,7 +37,7 @@ let fortune = `No fortune found yet...`;
 //Variables for sounds
 let roomTwoMusic;
 let roomThreeMusic;
-let roomFourMusic;
+
 
 
 //Variable for facing wall in the room
@@ -76,7 +76,7 @@ fortuneData = loadJSON(`https://raw.githubusercontent.com/dariusk/corpora/master
 //Preload all the sound files
 roomTwoMusic = new Audio('assets/sounds/Vivaldi.mp3');
 roomThreeMusic = new Audio('assets/sounds/Meditation.mp3');
-roomFourMusic = new Audio('assets/sounds/remusic.mp3');
+
 }
 
 //Description of setup
@@ -105,17 +105,6 @@ function draw() {
     roomThree();
     break;
 
-    case 4:
-    roomFour();
-    break;
-
-    case 5:
-    roomFive();
-    break;
-
-    case 6:
-    end();
-    break;
   }
 }
 
@@ -430,20 +419,9 @@ function mousePressed() {
     clear();
     room = 3;
   }
-  else if (room === 3){
-    clear();
-    room = 4;
-  }
-  else if (room === 4){
-    clear();
-    room = 5;
-  }
-  else if (room === 5){
-    clear();
-    room = 6;
-  }
-}
 
+}
+//Moving the walls
 function keyPressed() {
   if (wall === 0 && keyCode === 37) {
     wall = 1;
