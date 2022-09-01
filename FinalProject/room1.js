@@ -1,7 +1,7 @@
 /**
 ROOM 1: Sending sth out
 inspired by the Star Wars credits - this is a list of affirmations being shown on the screen
-This room is interactive because Annyang Responsive Voice will reply your affirmations
+This room is interactive because Annyang Responsive Voice will reply to your affirmations
 */
 
 "use strict";
@@ -1449,7 +1449,50 @@ let fontJSON =  {
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };
+    if (annyang) {
+      // Annyang will listen to the affirmations being said and respond
+      var commands = {
+        'Everything I touch is a success.' : function() {
+          alert('yes!');
+        },
+        'I am determined to succeed, nothing can stop me.' : function() {
+          alert('Love ya determination!');
+        },
+        'I choose to believe that the world is a safe and luxurious place.' : function() {
+          alert('yaaazzz');
+        },
+        'I choose to believe that the world is a safe and luxurious place.' : function() {
+          alert('yaaazzz');
+        },
+        'I am presented with opportunities for success regularly.' : function() {
+          alert('everyday is a present!');
+        },
+        'I recognize within myself an ability to achieve tremendous success.' : function() {
+          alert('yass yass yaass');
+        },
+        'I am at peace with my past; I’ve let go.' : function() {
+          alert('peeeaaceee~~');
+        },
+        'If I would like my world to change, I must make positive changes inside my mind.' : function() {
+          alert('let the change begins!!!');
+        },
+        'Love comes from within my heart; I create the love I need' : function() {
+          alert('yes you MATTER');
+        },
+        'The environment of my body is thriving; all my cells work harmoniously.' : function() {
+          alert('take care of yourself~~');
+        },
+        'I appreciate the past, present, and future of my life.' : function() {
+          alert('gratitude <3');
+        }
+      };
 
+      // Add our commands to annyang
+      annyang.addCommands(commands);
+
+      // Start listening.
+      annyang.start();
+    };
 
     init();
     mainLoop();
