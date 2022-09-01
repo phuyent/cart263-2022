@@ -1,0 +1,135 @@
+/*********************************************
+
+Here is a description of any special CSS used.
+In this case it's just padding and margin to 0
+and then centring the canvas (and anything else)
+using the CSS Grid.
+
+Also hides overflow.
+
+body {
+  padding: 0;
+  margin: 0;
+  display: grid; /* Set up the grid and justify/align to center
+  justify-content: center;
+  align-content: center;
+  height: 100vh; /* Body is the height of the viewport
+  overflow: hidden; /* Hide anything that goes off the window size
+}
+
+**********************************************/
+h1 {
+font-family: 'Noto Sans Mono', monospace;
+  font-size: 60px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 8px solid #ffffff;
+  padding: 40px;
+  text-align: center;
+}
+
+p.note {
+  text-align: center;
+  color: #ffffff;
+}
+div.linkbox1 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+div.linkbox2 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+}
+
+div.linkbox3 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  float: inherit;
+  margin-top: 10px;
+}
+
+div.linkbox4 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color:#000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  float: inherit;
+  margin-top: 10px;
+}
+div.linkbox5 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+  display: block;
+  float: inherit;
+  margin-top: 10px;
+}
+div.linkbox6 {
+  font-family: 'Noto Sans Mono', monospace;
+  font-size: 24px;
+  color: #ffffff;
+  background-color: #000000;
+  margin: auto;
+  width: 20%;
+  border: 3px solid  #ffffff;
+  padding: 10px;
+  text-align: center;
+  display: block;
+
+  bottom: 10px;
+}
+strong {
+  text-decoration-color: #ffffff;
+  text-decoration: underline;
+}
+
+a {
+  color: #ffffff;
+}
+
+p.specialparagraph {
+  font-family: 'Noto Sans Mono', monospace;
+  padding: 10px;
+  text-align: center;
+  background-color:#000000;
+  margin: 40px;
+  border: 10px inset #cc0000;
+  border-radius: 10px;
+
+}
