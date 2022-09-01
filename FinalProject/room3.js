@@ -1,6 +1,8 @@
 /**
-Udemy Three 3d library
-https://concordia.udemy.com/course/3d-programming-with-javascript-and-the-threejs-3d-library/learn/lecture/10731190#overview
+ROOM 3: Across the surface
+Navigate through the cube by using the up,down,left,right arrows
+No harm no foul if u touch the cubes, it's just for interacting with the geometry
+
 */
 
 "use strict";
@@ -43,8 +45,8 @@ let onKeyDown = function(e) {
 
 
 
-// set up the environment -
-// initiallize scene, camera, objects and renderer
+// Set up the environment
+// Initiallize scene, camera, objects and renderer
 let init = function() {
 		// create the scene
 		scene = new THREE.Scene();
@@ -72,14 +74,16 @@ let init = function() {
 };
 
 
-// main animation loop - calls every 50-60 ms.
+// Main animation loop
 let mainLoop = function() {
 		camera.position.z -= 0.1;
-
+		for(let i = 1; i <= 150; i++)
+				createCube();
+				cubes.forEach((cube) => scene.add(cube));
 		renderer.render(scene, camera);
 		requestAnimationFrame(mainLoop);
 };
 
-///////////////////////////////////////////////
+
 init();
 mainLoop();

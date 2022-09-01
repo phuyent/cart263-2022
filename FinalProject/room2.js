@@ -1,6 +1,7 @@
 /**
-Udemy Three 3d library
-https://concordia.udemy.com/course/3d-programming-with-javascript-and-the-threejs-3d-library/learn/lecture/10731190#overview
+ROOM 2: Ballons
+Interactive popping balloons room for fun 
+
 */
 
 "use strict";
@@ -70,8 +71,8 @@ let onMouseClick = function(e) {
 };
 
 
-// set up the environment -
-// initiallize scene, camera, objects and renderer
+// Set up the environment
+// Initiallize scene, camera, objects and renderer
 let init = function() {
 		// create the scene
 		scene = new THREE.Scene();
@@ -96,7 +97,7 @@ let init = function() {
 		rayCast = new THREE.Raycaster();
 		mouse = new THREE.Vector2();
 		mouse.x = mouse.y = -1;
-		// create the renderer
+		// Create the renderer
 		renderer = new THREE.WebGLRenderer();
 		renderer.setSize(window.innerWidth, window.innerHeight);
 
@@ -106,7 +107,7 @@ let init = function() {
 };
 
 
-// main animation loop - calls 50-60 times per second.
+// Main animation loop
 let mainLoop = function() {
 		let rand = Math.random();
 		if(rand < 0.05)
@@ -124,6 +125,6 @@ let mainLoop = function() {
 		requestAnimationFrame(mainLoop);
 };
 
-///////////////////////////////////////////////
+
 init();
 mainLoop();

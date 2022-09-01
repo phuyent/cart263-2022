@@ -1,17 +1,18 @@
 /**
-Udemy Three 3d library
-https://concordia.udemy.com/course/3d-programming-with-javascript-and-the-threejs-3d-library/learn/lecture/10731190#overview
+ROOM 5: Spot Light
+Non-interactive mostly because you are just watching the cubes and the lights
+
 */
 
 "use strict";
 //Declare the elements needed to create a scene
-let scene, camera, renderer, spotLight1, spotLight2;
+let scene, camera, renderer, spotLight1, spotLight2, spotLight3;
 //Declare variables as the objects
-let plane, target1, target2;
+let plane, target1, target2, target3;
 //An array of cubes
 let cubes = [];
 //The values used in THREE js geometry
-let ADD = 0.01;
+let ADD = 0.1;
 
 
 let randomInRange = function(from, to) {
@@ -27,17 +28,18 @@ let createCube = function() {
 		let material = new THREE.MeshPhongMaterial(
 																{ color: Math.random() * 0xffffff });
 		let cube = new THREE.Mesh( geometry, material );
-		cube.position.x = randomInRange(-20, 20);
-		cube.position.z = randomInRange(-20, 20);
+		cube.position.x = randomInRange(-30, 30);
+		cube.position.z = randomInRange(-40, 40);
 		cubes.push(cube);
 };
 
 let createGeometry = function() {
+	//Create a plane as the floor
 		let geometry = new THREE.BoxGeometry(2000, 1, 2000);
 		let material = new THREE.MeshPhongMaterial({color: 0X693421, side: THREE.DoubleSide});
 		plane = new THREE.Mesh(geometry, material);
 		plane.position.y = -1;
-
+		//Loop that generates cubes
 		for(let i = 1; i <= 10; i++)
 				createCube();
 
@@ -89,6 +91,21 @@ let init = function() {
 
 		scene.add(target2);
 
+		spotLight3 = new THREE.SpotLight(0xffffff, 1);
+		spotLight3.position.set(-25, 60, 10);
+		spotLight3.angle = Math.PI / 20;
+		spotLight3.penumbra = 0.05;
+		spotLight3.decay = 2;
+		spotLight3.distance = 200;
+
+		scene.add(spotLight3);
+
+		target3 = new THREE.Object3D();
+		target2.position.set(-10, 0, 0);
+		spotLight3.target = target3;
+
+		scene.add(target3);
+
 
 		createGeometry();
 
@@ -107,6 +124,7 @@ let mainLoop = function() {
 
 		target1.position.x -= ADD;
 		target2.position.x += ADD;
+		target3.position.z += ADD;
 		if(target1.position.x < -20 || target1.position.x > 20)
 				ADD *= -1;
 

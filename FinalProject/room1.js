@@ -1,9 +1,11 @@
 /**
-Udemy Three 3d library
-https://concordia.udemy.com/course/3d-programming-with-javascript-and-the-threejs-3d-library/learn/lecture/10731190#overview
+ROOM 1: Sending sth out
+inspired by the Star Wars credits - this is a list of affirmations being shown on the screen
+This room is interactive because Annyang Responsive Voice will reply your affirmations
 */
 
 "use strict";
+//Load the JSON FONT needed for the room
 let fontJSON =  {
   "glyphs": {
     "ο": {
@@ -1281,7 +1283,11 @@ let fontJSON =  {
   "underlineThickness": 50
 };
 
-    let scene, camera, renderer, text;
+
+    let scene, camera, renderer;
+    let text0, text1, text2;
+    //Declare an empty array to store the titles we need
+    let titles = [];
     let ADD = 0.06, theta = 0;
 
     let createGeometry = function() {
@@ -1289,23 +1295,45 @@ let fontJSON =  {
         let loader = new THREE.FontLoader();
         let font = loader.parse(fontJSON);
 
-        let titles = "99 bottles of beer on the wall,\n99 bottles of beer.\nTake one down, pass it around,\n98 bottles of beer on the wall,\n98 bottles of beer.\nTake one down, pass it around,\n97 bottles of beer on the wall,\n97 bottles of beer.\nTake one down, pass it around,\n96 bottles of beer on the wall,\n96 bottles of beer.\nTake one down, pass it around,\n95 bottles of beer on the wall,\n95 bottles of beer.";
+        //Number the titles in the array
+        titles[0] = "Everything I touch is a success.";
+        titles[1] = "I am determined to succeed; nothing can stop me.";
+        titles[2] = "I choose to believe that the world is a safe and luxurious place.";
+        titles[3] = "I am presented with opportunities for success regularly.";
+        titles[4] = "I recognize within myself an ability to achieve tremendous success.";
+        titles[5] = "I am at peace with my past; I’ve let go.";
+        titles[6] = "If I would like my world to change, I must make positive changes inside my mind.";
+        titles[7] = "Love comes from within my heart; I create the love I need.";
+        titles[8] = "The environment of my body is thriving; all my cells work harmoniously.";
+        titles[9] = "I appreciate the past, present, and future of my life.";
 
+        //Display the texts
+        let geometry0 = new THREE.TextGeometry(titles[0], {font: font, size: 3, height: 0.1});
+        let material0 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text0 = new THREE.Mesh(geometry0, material0);
+        text0.position.x = -30;
+        text0.rotation.x = -0.9;
+        scene.add(text0);
 
-        let geometry = new THREE.TextGeometry(titles, {font: font, size: 3, height: 0.1});
+        let geometry1 = new THREE.TextGeometry(titles[1], {font: font, size: 3, height: 0.1});
+        let material1 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text1 = new THREE.Mesh(geometry1, material1);
+        text1.position.x = -50;
+        text1.rotation.x = -0.9;
+        scene.add(text1);
 
-        let material = new THREE.MeshBasicMaterial({color:0xffffff});
-        text = new THREE.Mesh(geometry, material);
-
-        text.position.x = -25;
-        text.rotation.x = -0.9;
-        scene.add(text);
+        let geometry2 = new THREE.TextGeometry(titles[2], {font: font, size: 3, height: 0.1});
+        let material2 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text2 = new THREE.Mesh(geometry2, material2);
+        text2.position.x = -60;
+        text2.rotation.x = -0.9;
+        scene.add(text2);
 
     };
 
 
-    // set up the environment -
-    // initiallize scene, camera, objects and renderer
+    // Set up the environment
+    // Initiallize scene, camera, objects and renderer
     let init = function() {
         // create the scene
         scene = new THREE.Scene();
@@ -1329,14 +1357,21 @@ let fontJSON =  {
     };
 
 
-    // main animation loop - calls 50-60 times per second.
+    // Main animation loop
     let mainLoop = function() {
-        text.position.z -= ADD;
-        text.position.y += ADD / 2;
+        text0.position.z -= ADD;
+        text0.position.y += ADD / 2;
+
+        text1.position.z -= ADD;
+        text1.position.y += ADD / 2.5;
+
+        text2.position.z -= ADD;
+        text2.position.y += ADD / 3;
+
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };
 
-    ///////////////////////////////////////////////
+    
     init();
     mainLoop();

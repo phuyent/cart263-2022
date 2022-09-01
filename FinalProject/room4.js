@@ -1,11 +1,15 @@
 /**
-Udemy Three 3d library
-https://concordia.udemy.com/course/3d-programming-with-javascript-and-the-threejs-3d-library/learn/lecture/10731190#overview
+ROOM 4: RAIN OF DONUTS
+A room with colorful donuts falling with music 
+Non-interactive
 */
 
 "use strict";
+//Declare the elements needed for the scene
 let scene, camera, renderer;
+//Array to store the donut object
 let donuts = [];
+//Values variables
 let ADD = 0.05;
 let THETA = 0;
 
@@ -24,6 +28,7 @@ let createDonut = function() {
 		d.position.x = randomInRange(-15, 15);
 		d.position.z = randomInRange(-15, 15);
 		d.position.y = 15;
+
 		scene.add(d);
 		donuts.push(d);
 };
@@ -60,11 +65,12 @@ let mainLoop = function() {
 
 		donuts.forEach(d => d.position.y -= ADD);
 
+
 		//The camera rotating around the scene
-		camera.lookAt(new THREE.Vector3(0,0,0));
-		camera.position.x = 40 * Math.sin(THETA);
-		camera.position.z = 40 * Math.cos(THETA);
-		THETA += ADD
+		//camera.lookAt(new THREE.Vector3(0,0,0));
+		//camera.position.x = 40 * Math.sin(THETA);
+		//camera.position.z = 40 * Math.cos(THETA);
+		//THETA += ADD;
 
 		renderer.render(scene, camera);
 		requestAnimationFrame(mainLoop);
