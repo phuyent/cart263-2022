@@ -1285,7 +1285,7 @@ let fontJSON =  {
 
 
     let scene, camera, renderer;
-    let text0, text1, text2;
+    let text0, text1, text2, text3, text4, text5, text6, text7, text8, text9;
     //Declare an empty array to store the titles we need
     let titles = [];
     let ADD = 0.06, theta = 0;
@@ -1318,7 +1318,8 @@ let fontJSON =  {
         let geometry1 = new THREE.TextGeometry(titles[1], {font: font, size: 3, height: 0.1});
         let material1 = new THREE.MeshBasicMaterial({color:0xffffff});
         text1 = new THREE.Mesh(geometry1, material1);
-        text1.position.x = -50;
+        text1.position.x = -45;
+        text1.position.y = -5;
         text1.rotation.x = -0.9;
         scene.add(text1);
 
@@ -1326,9 +1327,65 @@ let fontJSON =  {
         let material2 = new THREE.MeshBasicMaterial({color:0xffffff});
         text2 = new THREE.Mesh(geometry2, material2);
         text2.position.x = -60;
+        text2.position.y = -10;
         text2.rotation.x = -0.9;
         scene.add(text2);
 
+        let geometry3 = new THREE.TextGeometry(titles[3], {font: font, size: 3, height: 0.1});
+        let material3 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text3 = new THREE.Mesh(geometry3, material3);
+        text3.position.x = -50;
+        text3.position.y = -15;
+        text3.rotation.x = -0.9;
+        scene.add(text3);
+
+        let geometry4 = new THREE.TextGeometry(titles[4], {font: font, size: 3, height: 0.1});
+        let material4 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text4 = new THREE.Mesh(geometry4, material4);
+        text4.position.x = -65;
+        text4.position.y = -20;
+        text4.rotation.x = -0.9;
+        scene.add(text4);
+
+        let geometry5 = new THREE.TextGeometry(titles[5], {font: font, size: 3, height: 0.1});
+        let material5 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text5 = new THREE.Mesh(geometry5, material5);
+        text5.position.x = -35;
+        text5.position.y = -25;
+        text5.rotation.x = -0.9;
+        scene.add(text5);
+
+        let geometry6 = new THREE.TextGeometry(titles[6], {font: font, size: 3, height: 0.1});
+        let material6 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text6 = new THREE.Mesh(geometry6, material6);
+        text6.position.x = -75;
+        text6.position.y = -30;
+        text6.rotation.x = -0.9;
+        scene.add(text6);
+
+        let geometry7 = new THREE.TextGeometry(titles[7], {font: font, size: 3, height: 0.1});
+        let material7 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text7 = new THREE.Mesh(geometry7, material7);
+        text7.position.x = -50;
+        text7.position.y = -35;
+        text7.rotation.x = -0.9;
+        scene.add(text7);
+
+        let geometry8 = new THREE.TextGeometry(titles[8], {font: font, size: 3, height: 0.1});
+        let material8 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text8 = new THREE.Mesh(geometry8, material8);
+        text8.position.x = -70;
+        text8.position.y = -40;
+        text8.rotation.x = -0.9;
+        scene.add(text8);
+
+        let geometry9 = new THREE.TextGeometry(titles[9], {font: font, size: 3, height: 0.1});
+        let material9 = new THREE.MeshBasicMaterial({color:0xffffff});
+        text9 = new THREE.Mesh(geometry9, material9);
+        text9.position.x = -45;
+        text9.position.y = -45;
+        text9.rotation.x = -0.9;
+        scene.add(text9);
     };
 
 
@@ -1368,10 +1425,31 @@ let fontJSON =  {
         text2.position.z -= ADD;
         text2.position.y += ADD / 3;
 
+        text3.position.z -= ADD;
+        text3.position.y += ADD / 3.5;
+
+        text4.position.z -= ADD;
+        text4.position.y += ADD / 4;
+
+        text5.position.z -= ADD;
+        text5.position.y += ADD / 4.5;
+
+        text6.position.z -= ADD;
+        text6.position.y += ADD / 5;
+
+        text7.position.z -= ADD;
+        text7.position.y += ADD / 5.5;
+
+        text8.position.z -= ADD;
+        text8.position.y += ADD / 6;
+
+        text9.position.z -= ADD;
+        text9.position.y += ADD / 6.5;
+
         renderer.render(scene, camera);
         requestAnimationFrame(mainLoop);
     };
 
-    
+
     init();
     mainLoop();
