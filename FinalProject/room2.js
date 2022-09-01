@@ -31,7 +31,7 @@ class Balloon {
 		let x = randomInRange(-60, 60);
 		let z = randomInRange(40, -40);
 		let geometry = new THREE.SphereGeometry(3, 30, 30);
-		let material = new THREE.MeshPhongMaterial({color: Math.random() * white,
+		let material = new THREE.MeshPhongMaterial({color: Math.random() * 0xffffff,
 			shininess: 100});
 			let b = new THREE.Mesh(geometry, material);
 			b.position.set(x, 0, z);
@@ -96,7 +96,7 @@ class Balloon {
 
 		// Create an locate the camera
 
-		camera = new THREE.PerspectiveCamera(75,
+		camera = new THREE.PerspectiveCamera(50,
 			window.innerWidth / window.innerHeight,
 			1, 1000);
 
