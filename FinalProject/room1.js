@@ -1,6 +1,9 @@
 /**
 ROOM 1: Sending sth out
-inspired by the Star Wars credits - this is a list of affirmations being shown on the screen
+Inspired by the Star Wars credits
+and https://threejs.org/examples/?q=text#webgl_geometry_text_stroke
+and https://threejs.org/examples/?q=text#webgl_geometry_text_shapes
+This is a list of affirmations being shown on the screen
 This room is interactive because Annyang Responsive Voice will reply to your affirmations
 */
 
@@ -1284,215 +1287,215 @@ let fontJSON =  {
 };
 
 
-    let scene, camera, renderer;
-    let text0, text1, text2, text3, text4, text5, text6, text7, text8, text9;
-    //Declare an empty array to store the titles we need
-    let titles = [];
-    let ADD = 0.06, theta = 0;
+let scene, camera, renderer;
+let text0, text1, text2, text3, text4, text5, text6, text7, text8, text9;
+//Declare an empty array to store the titles we need
+let titles = [];
+let ADD = 0.06, theta = 0;
 
-    let createGeometry = function() {
+let createGeometry = function() {
 
-        let loader = new THREE.FontLoader();
-        let font = loader.parse(fontJSON);
+  let loader = new THREE.FontLoader();
+  let font = loader.parse(fontJSON);
 
-        //Number the titles in the array
-        titles[0] = "Everything I touch is a success.";
-        titles[1] = "I am determined to succeed; nothing can stop me.";
-        titles[2] = "I choose to believe that the world is a safe and luxurious place.";
-        titles[3] = "I am presented with opportunities for success regularly.";
-        titles[4] = "I recognize within myself an ability to achieve tremendous success.";
-        titles[5] = "I am at peace with my past; I’ve let go.";
-        titles[6] = "If I would like my world to change, I must make positive changes inside my mind.";
-        titles[7] = "Love comes from within my heart; I create the love I need.";
-        titles[8] = "The environment of my body is thriving; all my cells work harmoniously.";
-        titles[9] = "I appreciate the past, present, and future of my life.";
+  //Number the titles in the array
+  titles[0] = "Everything I touch is a success.";
+  titles[1] = "I am determined to succeed; nothing can stop me.";
+  titles[2] = "I choose to believe that the world is a safe and luxurious place.";
+  titles[3] = "I am presented with opportunities for success regularly.";
+  titles[4] = "I recognize within myself an ability to achieve tremendous success.";
+  titles[5] = "I am at peace with my past; I’ve let go.";
+  titles[6] = "If I would like my world to change, I must make positive changes inside my mind.";
+  titles[7] = "Love comes from within my heart; I create the love I need.";
+  titles[8] = "The environment of my body is thriving; all my cells work harmoniously.";
+  titles[9] = "I appreciate the past, present, and future of my life.";
 
-        //Display the texts
-        let geometry0 = new THREE.TextGeometry(titles[0], {font: font, size: 3, height: 0.1});
-        let material0 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text0 = new THREE.Mesh(geometry0, material0);
-        text0.position.x = -30;
-        text0.rotation.x = -0.9;
-        scene.add(text0);
+  //Display the texts
+  let geometry0 = new THREE.TextGeometry(titles[0], {font: font, size: 3, height: 0.1});
+  let material0 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text0 = new THREE.Mesh(geometry0, material0);
+  text0.position.x = -30;
+  text0.rotation.x = -0.9;
+  scene.add(text0);
 
-        let geometry1 = new THREE.TextGeometry(titles[1], {font: font, size: 3, height: 0.1});
-        let material1 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text1 = new THREE.Mesh(geometry1, material1);
-        text1.position.x = -45;
-        text1.position.y = -5;
-        text1.rotation.x = -0.9;
-        scene.add(text1);
+  let geometry1 = new THREE.TextGeometry(titles[1], {font: font, size: 3, height: 0.1});
+  let material1 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text1 = new THREE.Mesh(geometry1, material1);
+  text1.position.x = -45;
+  text1.position.y = -5;
+  text1.rotation.x = -0.9;
+  scene.add(text1);
 
-        let geometry2 = new THREE.TextGeometry(titles[2], {font: font, size: 3, height: 0.1});
-        let material2 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text2 = new THREE.Mesh(geometry2, material2);
-        text2.position.x = -60;
-        text2.position.y = -10;
-        text2.rotation.x = -0.9;
-        scene.add(text2);
+  let geometry2 = new THREE.TextGeometry(titles[2], {font: font, size: 3, height: 0.1});
+  let material2 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text2 = new THREE.Mesh(geometry2, material2);
+  text2.position.x = -60;
+  text2.position.y = -10;
+  text2.rotation.x = -0.9;
+  scene.add(text2);
 
-        let geometry3 = new THREE.TextGeometry(titles[3], {font: font, size: 3, height: 0.1});
-        let material3 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text3 = new THREE.Mesh(geometry3, material3);
-        text3.position.x = -50;
-        text3.position.y = -15;
-        text3.rotation.x = -0.9;
-        scene.add(text3);
+  let geometry3 = new THREE.TextGeometry(titles[3], {font: font, size: 3, height: 0.1});
+  let material3 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text3 = new THREE.Mesh(geometry3, material3);
+  text3.position.x = -50;
+  text3.position.y = -15;
+  text3.rotation.x = -0.9;
+  scene.add(text3);
 
-        let geometry4 = new THREE.TextGeometry(titles[4], {font: font, size: 3, height: 0.1});
-        let material4 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text4 = new THREE.Mesh(geometry4, material4);
-        text4.position.x = -65;
-        text4.position.y = -20;
-        text4.rotation.x = -0.9;
-        scene.add(text4);
+  let geometry4 = new THREE.TextGeometry(titles[4], {font: font, size: 3, height: 0.1});
+  let material4 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text4 = new THREE.Mesh(geometry4, material4);
+  text4.position.x = -65;
+  text4.position.y = -20;
+  text4.rotation.x = -0.9;
+  scene.add(text4);
 
-        let geometry5 = new THREE.TextGeometry(titles[5], {font: font, size: 3, height: 0.1});
-        let material5 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text5 = new THREE.Mesh(geometry5, material5);
-        text5.position.x = -35;
-        text5.position.y = -25;
-        text5.rotation.x = -0.9;
-        scene.add(text5);
+  let geometry5 = new THREE.TextGeometry(titles[5], {font: font, size: 3, height: 0.1});
+  let material5 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text5 = new THREE.Mesh(geometry5, material5);
+  text5.position.x = -35;
+  text5.position.y = -25;
+  text5.rotation.x = -0.9;
+  scene.add(text5);
 
-        let geometry6 = new THREE.TextGeometry(titles[6], {font: font, size: 3, height: 0.1});
-        let material6 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text6 = new THREE.Mesh(geometry6, material6);
-        text6.position.x = -75;
-        text6.position.y = -30;
-        text6.rotation.x = -0.9;
-        scene.add(text6);
+  let geometry6 = new THREE.TextGeometry(titles[6], {font: font, size: 3, height: 0.1});
+  let material6 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text6 = new THREE.Mesh(geometry6, material6);
+  text6.position.x = -75;
+  text6.position.y = -30;
+  text6.rotation.x = -0.9;
+  scene.add(text6);
 
-        let geometry7 = new THREE.TextGeometry(titles[7], {font: font, size: 3, height: 0.1});
-        let material7 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text7 = new THREE.Mesh(geometry7, material7);
-        text7.position.x = -50;
-        text7.position.y = -35;
-        text7.rotation.x = -0.9;
-        scene.add(text7);
+  let geometry7 = new THREE.TextGeometry(titles[7], {font: font, size: 3, height: 0.1});
+  let material7 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text7 = new THREE.Mesh(geometry7, material7);
+  text7.position.x = -50;
+  text7.position.y = -35;
+  text7.rotation.x = -0.9;
+  scene.add(text7);
 
-        let geometry8 = new THREE.TextGeometry(titles[8], {font: font, size: 3, height: 0.1});
-        let material8 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text8 = new THREE.Mesh(geometry8, material8);
-        text8.position.x = -70;
-        text8.position.y = -40;
-        text8.rotation.x = -0.9;
-        scene.add(text8);
+  let geometry8 = new THREE.TextGeometry(titles[8], {font: font, size: 3, height: 0.1});
+  let material8 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text8 = new THREE.Mesh(geometry8, material8);
+  text8.position.x = -70;
+  text8.position.y = -40;
+  text8.rotation.x = -0.9;
+  scene.add(text8);
 
-        let geometry9 = new THREE.TextGeometry(titles[9], {font: font, size: 3, height: 0.1});
-        let material9 = new THREE.MeshBasicMaterial({color:0xffffff});
-        text9 = new THREE.Mesh(geometry9, material9);
-        text9.position.x = -45;
-        text9.position.y = -45;
-        text9.rotation.x = -0.9;
-        scene.add(text9);
+  let geometry9 = new THREE.TextGeometry(titles[9], {font: font, size: 3, height: 0.1});
+  let material9 = new THREE.MeshBasicMaterial({color:0xffffff});
+  text9 = new THREE.Mesh(geometry9, material9);
+  text9.position.x = -45;
+  text9.position.y = -45;
+  text9.rotation.x = -0.9;
+  scene.add(text9);
+};
+
+
+// Set up the environment
+// Initiallize scene, camera, objects and renderer
+let init = function() {
+  // create the scene
+  scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x000000);
+
+  // create an locate the camera
+  camera = new THREE.PerspectiveCamera(70,
+    window.innerWidth / window.innerHeight,
+    1, 150);
+
+    camera.position.set(0, 5, 40);
+
+    createGeometry();
+
+    // create the renderer
+    renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+
+    document.body.appendChild(renderer.domElement);
+
+  };
+
+
+  // Main animation loop
+  let mainLoop = function() {
+    text0.position.z -= ADD;
+    text0.position.y += ADD / 2;
+
+    text1.position.z -= ADD;
+    text1.position.y += ADD / 2.5;
+
+    text2.position.z -= ADD;
+    text2.position.y += ADD / 3;
+
+    text3.position.z -= ADD;
+    text3.position.y += ADD / 3.5;
+
+    text4.position.z -= ADD;
+    text4.position.y += ADD / 4;
+
+    text5.position.z -= ADD;
+    text5.position.y += ADD / 4.5;
+
+    text6.position.z -= ADD;
+    text6.position.y += ADD / 5;
+
+    text7.position.z -= ADD;
+    text7.position.y += ADD / 5.5;
+
+    text8.position.z -= ADD;
+    text8.position.y += ADD / 6;
+
+    text9.position.z -= ADD;
+    text9.position.y += ADD / 6.5;
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(mainLoop);
+  };
+  if (annyang) {
+    // Annyang will listen to the affirmations being said and respond
+    var commands = {
+      'Everything I touch is a success.' : function() {
+        alert('yes!');
+      },
+      'I am determined to succeed, nothing can stop me.' : function() {
+        alert('Love ya determination!');
+      },
+      'I choose to believe that the world is a safe and luxurious place.' : function() {
+        alert('yaaazzz');
+      },
+      'I choose to believe that the world is a safe and luxurious place.' : function() {
+        alert('yaaazzz');
+      },
+      'I am presented with opportunities for success regularly.' : function() {
+        alert('everyday is a present!');
+      },
+      'I recognize within myself an ability to achieve tremendous success.' : function() {
+        alert('yass yass yaass');
+      },
+      'I am at peace with my past; I’ve let go.' : function() {
+        alert('peeeaaceee~~');
+      },
+      'If I would like my world to change, I must make positive changes inside my mind.' : function() {
+        alert('let the change begins!!!');
+      },
+      'Love comes from within my heart; I create the love I need' : function() {
+        alert('yes you MATTER');
+      },
+      'The environment of my body is thriving; all my cells work harmoniously.' : function() {
+        alert('take care of yourself~~');
+      },
+      'I appreciate the past, present, and future of my life.' : function() {
+        alert('gratitude <3');
+      }
     };
 
+    // Add our commands to annyang
+    annyang.addCommands(commands);
 
-    // Set up the environment
-    // Initiallize scene, camera, objects and renderer
-    let init = function() {
-        // create the scene
-        scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x000000);
+    // Start listening.
+    annyang.start();
+  };
 
-        // create an locate the camera
-        camera = new THREE.PerspectiveCamera(70,
-                    window.innerWidth / window.innerHeight,
-                    1, 150);
-
-        camera.position.set(0, 5, 40);
-
-        createGeometry();
-
-        // create the renderer
-        renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-
-        document.body.appendChild(renderer.domElement);
-
-    };
-
-
-    // Main animation loop
-    let mainLoop = function() {
-        text0.position.z -= ADD;
-        text0.position.y += ADD / 2;
-
-        text1.position.z -= ADD;
-        text1.position.y += ADD / 2.5;
-
-        text2.position.z -= ADD;
-        text2.position.y += ADD / 3;
-
-        text3.position.z -= ADD;
-        text3.position.y += ADD / 3.5;
-
-        text4.position.z -= ADD;
-        text4.position.y += ADD / 4;
-
-        text5.position.z -= ADD;
-        text5.position.y += ADD / 4.5;
-
-        text6.position.z -= ADD;
-        text6.position.y += ADD / 5;
-
-        text7.position.z -= ADD;
-        text7.position.y += ADD / 5.5;
-
-        text8.position.z -= ADD;
-        text8.position.y += ADD / 6;
-
-        text9.position.z -= ADD;
-        text9.position.y += ADD / 6.5;
-
-        renderer.render(scene, camera);
-        requestAnimationFrame(mainLoop);
-    };
-    if (annyang) {
-      // Annyang will listen to the affirmations being said and respond
-      var commands = {
-        'Everything I touch is a success.' : function() {
-          alert('yes!');
-        },
-        'I am determined to succeed, nothing can stop me.' : function() {
-          alert('Love ya determination!');
-        },
-        'I choose to believe that the world is a safe and luxurious place.' : function() {
-          alert('yaaazzz');
-        },
-        'I choose to believe that the world is a safe and luxurious place.' : function() {
-          alert('yaaazzz');
-        },
-        'I am presented with opportunities for success regularly.' : function() {
-          alert('everyday is a present!');
-        },
-        'I recognize within myself an ability to achieve tremendous success.' : function() {
-          alert('yass yass yaass');
-        },
-        'I am at peace with my past; I’ve let go.' : function() {
-          alert('peeeaaceee~~');
-        },
-        'If I would like my world to change, I must make positive changes inside my mind.' : function() {
-          alert('let the change begins!!!');
-        },
-        'Love comes from within my heart; I create the love I need' : function() {
-          alert('yes you MATTER');
-        },
-        'The environment of my body is thriving; all my cells work harmoniously.' : function() {
-          alert('take care of yourself~~');
-        },
-        'I appreciate the past, present, and future of my life.' : function() {
-          alert('gratitude <3');
-        }
-      };
-
-      // Add our commands to annyang
-      annyang.addCommands(commands);
-
-      // Start listening.
-      annyang.start();
-    };
-
-    init();
-    mainLoop();
+  init();
+  mainLoop();

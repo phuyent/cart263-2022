@@ -1,7 +1,7 @@
 /**
 ROOM 5: Spot Light
 Non-interactive mostly because you are just watching the cubes and the lights
-
+Inspired by: https://threejs.org/examples/#webgl_lights_spotlights
 */
 
 "use strict";
@@ -16,124 +16,124 @@ let ADD = 0.1;
 
 
 let randomInRange = function(from, to) {
-		let x = Math.random() * (to - from);
-		return x + from;
+	let x = Math.random() * (to - from);
+	return x + from;
 };
 
 let createCube = function() {
-		let w = randomInRange(5, 8);
-		let h = randomInRange(5, 8);
-		let d = randomInRange(5, 8);
-		let geometry = new THREE.BoxGeometry(w, h, d);
-		let material = new THREE.MeshPhongMaterial(
-																{ color: Math.random() * 0xffffff });
+	let w = randomInRange(5, 8);
+	let h = randomInRange(5, 8);
+	let d = randomInRange(5, 8);
+	let geometry = new THREE.BoxGeometry(w, h, d);
+	let material = new THREE.MeshPhongMaterial(
+		{ color: Math.random() * 0xffffff });
 		let cube = new THREE.Mesh( geometry, material );
 		cube.position.x = randomInRange(-30, 30);
 		cube.position.z = randomInRange(-40, 40);
 		cubes.push(cube);
-};
+	};
 
-let createGeometry = function() {
-	//Create a plane as the floor
+	let createGeometry = function() {
+		//Create a plane as the floor
 		let geometry = new THREE.BoxGeometry(2000, 1, 2000);
 		let material = new THREE.MeshPhongMaterial({color: 0X693421, side: THREE.DoubleSide});
 		plane = new THREE.Mesh(geometry, material);
 		plane.position.y = -1;
 		//Loop that generates cubes
 		for(let i = 1; i <= 10; i++)
-				createCube();
+		createCube();
 
 		cubes.forEach(cube => scene.add(cube));
 		scene.add(plane);
 
-};
+	};
 
-// set up the environment -
-// initiallize scene, camera, objects and renderer
-let init = function() {
+	// set up the environment -
+	// initiallize scene, camera, objects and renderer
+	let init = function() {
 		// create the scene
 		scene = new THREE.Scene();
 		scene.background = new THREE.Color(0x000000);
 
 		// create an locate the camera
 		camera = new THREE.PerspectiveCamera(100,
-										window.innerWidth / window.innerHeight,
-										1, 1000);
-		camera.position.set(0, 10, 20);
+			window.innerWidth / window.innerHeight,
+			1, 1000);
+			camera.position.set(0, 10, 20);
 
-		spotLight1 = new THREE.SpotLight(0xffffff, 1);
-		spotLight1.position.set(15, 50, 50);
-		spotLight1.angle = Math.PI / 20;
-		spotLight1.penumbra = 0.05;
-		spotLight1.decay = 2;
-		spotLight1.distance = 200;
+			spotLight1 = new THREE.SpotLight(0xffffff, 1);
+			spotLight1.position.set(15, 50, 50);
+			spotLight1.angle = Math.PI / 20;
+			spotLight1.penumbra = 0.05;
+			spotLight1.decay = 2;
+			spotLight1.distance = 200;
 
-		scene.add(spotLight1);
+			scene.add(spotLight1);
 
-		target1 = new THREE.Object3D();
-		target1.position.set(20, 0, 0);
-		spotLight1.target = target1;
+			target1 = new THREE.Object3D();
+			target1.position.set(20, 0, 0);
+			spotLight1.target = target1;
 
-		scene.add(target1);
+			scene.add(target1);
 
-		spotLight2 = new THREE.SpotLight(0xffffff, 1);
-		spotLight2.position.set(-15, 20, 10);
-		spotLight2.angle = Math.PI / 20;
-		spotLight2.penumbra = 0.05;
-		spotLight2.decay = 2;
-		spotLight2.distance = 200;
+			spotLight2 = new THREE.SpotLight(0xffffff, 1);
+			spotLight2.position.set(-15, 20, 10);
+			spotLight2.angle = Math.PI / 20;
+			spotLight2.penumbra = 0.05;
+			spotLight2.decay = 2;
+			spotLight2.distance = 200;
 
-		scene.add(spotLight2);
+			scene.add(spotLight2);
 
-		target2 = new THREE.Object3D();
-		target1.position.set(-10, 0, 0);
-		spotLight2.target = target2;
+			target2 = new THREE.Object3D();
+			target1.position.set(-10, 0, 0);
+			spotLight2.target = target2;
 
-		scene.add(target2);
+			scene.add(target2);
 
-		spotLight3 = new THREE.SpotLight(0xffffff, 1);
-		spotLight3.position.set(-25, 60, 10);
-		spotLight3.angle = Math.PI / 20;
-		spotLight3.penumbra = 0.05;
-		spotLight3.decay = 2;
-		spotLight3.distance = 200;
+			spotLight3 = new THREE.SpotLight(0xffffff, 1);
+			spotLight3.position.set(-25, 60, 10);
+			spotLight3.angle = Math.PI / 20;
+			spotLight3.penumbra = 0.05;
+			spotLight3.decay = 2;
+			spotLight3.distance = 200;
 
-		scene.add(spotLight3);
+			scene.add(spotLight3);
 
-		target3 = new THREE.Object3D();
-		target2.position.set(-10, 0, 0);
-		spotLight3.target = target3;
+			target3 = new THREE.Object3D();
+			target2.position.set(-10, 0, 0);
+			spotLight3.target = target3;
 
-		scene.add(target3);
-
-
-		createGeometry();
+			scene.add(target3);
 
 
-		// create the renderer
-		renderer = new THREE.WebGLRenderer();
-		renderer.setSize(window.innerWidth, window.innerHeight);
-
-		document.body.appendChild(renderer.domElement);
-
-};
+			createGeometry();
 
 
-// main animation loop
-let mainLoop = function() {
+			// create the renderer
+			renderer = new THREE.WebGLRenderer();
+			renderer.setSize(window.innerWidth, window.innerHeight);
 
-		target1.position.x -= ADD;
-		target2.position.x += ADD;
-		target3.position.z += ADD;
-		if(target1.position.x < -20 || target1.position.x > 20)
-				ADD *= -1;
+			document.body.appendChild(renderer.domElement);
 
+		};
 
 
-		renderer.render(scene, camera);
-		requestAnimationFrame(mainLoop);
-};
+		// main animation loop
+		let mainLoop = function() {
 
-///////////////////////////////////////////////
-init();
-mainLoop();
+			target1.position.x -= ADD;
+			target2.position.x += ADD;
+			target3.position.z += ADD;
+			if(target1.position.x < -20 || target1.position.x > 20)
+			ADD *= -1;
+
+
+
+			renderer.render(scene, camera);
+			requestAnimationFrame(mainLoop);
+		};
+
+		///////////////////////////////////////////////
+		init();
+		mainLoop();
